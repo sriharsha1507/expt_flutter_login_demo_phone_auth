@@ -11,13 +11,19 @@ class _LoginPageState extends State<LoginPage> {
 
   String _mobileNumber;
 
-  void validateAndSave() {
+  bool validateAndSave() {
     final form = formKey.currentState;
     if (form.validate()) {
       form.save();
       print("Form is valid  $_mobileNumber");
-    } else {
-      print("Form is invalid");
+      return true;
+    }
+    return false;
+  }
+
+  void validateAndSubmit() {
+    if (validateAndSave()) {
+
     }
   }
 
@@ -53,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                   'Login',
                   style: new TextStyle(fontSize: 20.0),
                 ),
-                onPressed: validateAndSave,
+                onPressed: validateAndSubmit,
               )
             ],
           ),
